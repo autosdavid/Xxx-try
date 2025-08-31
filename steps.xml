@@ -1,0 +1,63 @@
+<automation>
+    <step
+        id="1"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Maak de basisstructuur van de website met authenticatie systeem en hoofdnavigatie
+    </step>
+    <step
+        id="2"
+        status="not_started"
+        personaList="developer, str_replace_editor">
+        Ontwikkel het dashboard met overzicht van alle taken, deadlines en belangrijke meldingen
+    </step>
+    <step
+        id="3"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Implementeer de personeelsbeheer module met profielen, documenten en verlof
+    </step>
+    <step
+        id="4"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Bouw de wagenbeheer module met alle secties (aankoop, verkoop, onderhoud, garanties)
+    </step>
+    <step
+        id="5"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Creëer de documentenbeheer module met zoek- en filterfunctionaliteit
+    </step>
+    <step
+        id="6"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Ontwikkel de financiële module met automatische berekeningen en visualisaties
+    </step>
+    <step
+        id="7"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Implementeer meldingen & herinneringen systeem
+    </step>
+    <step
+        id="8"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Voeg zoek & filter functionaliteit toe over alle modules
+    </step>
+    <step
+        id="9"
+        status="completed"
+        personaList="developer, str_replace_editor">
+        Test de volledige applicatie en optimaliseer voor responsiviteit
+    </step>
+    <step
+        id="10"
+        status="completed"
+        personaList="developer">
+        Deploy de website en test alle functionaliteiten
+    </step>
+    <!------------------------------------------->
+</automation>

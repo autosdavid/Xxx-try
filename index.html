@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHandel Pro - Login</title>
+    <meta name="description" content="Professioneel platform voor autohandel management">
+    <meta name="keywords" content="autohandel, wagenbeheer, personeel, documenten, financiën">
+    <meta name="theme-color" content="#1e40af">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#3b82f6', 
+                        accent: '#60a5fa'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Login Page -->
+    <div id="loginPage" class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div class="text-center">
+                <div class="mx-auto h-20 w-20 bg-primary rounded-full flex items-center justify-center">
+                    <i class="fas fa-car text-white text-3xl"></i>
+                </div>
+                <h1 class="mt-6 text-3xl font-bold text-gray-900" data-editable="true">AutoHandel Pro</h1>
+                <p class="mt-2 text-sm text-gray-600" data-editable="true">Alles-in-één platform voor autohandel</p>
+            </div>
+            
+            <form id="loginForm" class="mt-8 space-y-6">
+                <div class="space-y-4">
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-700">Gebruikersnaam</label>
+                        <input id="username" name="username" type="text" required 
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Wachtwoord</label>
+                        <input id="password" name="password" type="password" required
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label for="role" class="block text-sm font-medium text-gray-700">Rol</label>
+                        <select id="role" name="role" required
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                            <option value="">Selecteer rol</option>
+                            <option value="admin">Admin</option>
+                            <option value="verkoper">Verkoper</option>
+                            <option value="administratie">Administratie</option>
+                            <option value="personeel">Personeel</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Inloggen
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="hidden">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 flex items-center">
+                            <div class="h-8 w-8 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-car text-white text-sm"></i>
+                            </div>
+                            <span class="ml-2 text-xl font-bold text-gray-900">AutoHandel Pro</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <button id="notificationBtn" class="p-2 text-gray-400 hover:text-gray-500 relative">
+                                <i class="fas fa-bell text-lg"></i>
+                                <span id="notificationBadge" class="absolute top-0 right-0 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center hidden">3</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span id="userRole" class="text-sm text-gray-500"></span>
+                            <button id="logoutBtn" class="text-sm text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-sign-out-alt mr-1"></i>
+                                Uitloggen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="bg-primary text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex space-x-8 overflow-x-auto">
+                    <button class="nav-item flex items-center px-3 py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-white transition" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt mr-2"></i>
+                        Dashboard
+                    </button>
+                    <button class="nav-item flex items-center px-3 py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-white transition" data-page="wagens">
+                        <i class="fas fa-car mr-2"></i>
+                        Wagens
+                    </button>
+                    <button class="nav-item flex items-center px-3 py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-white transition" data-page="personeel">
+                        <i class="fas fa-users mr-2"></i>
+                        Personeel
+                    </button>
+                    <button class="nav-item flex items-center px-3 py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-white transition" data-page="documenten">
+                        <i class="fas fa-file-alt mr-2"></i>
+                        Documenten
+                    </button>
+                    <button class="nav-item flex items-center px-3 py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-white transition" data-page="financien">
+                        <i class="fas fa-euro-sign mr-2"></i>
+                        Financiën
+                    </button>
+                    <button class="nav-item flex items-center px-3 py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-white transition" data-page="meldingen">
+                        <i class="fas fa-bell mr-2"></i>
+                        Meldingen
+                    </button>
+                    <button class="nav-item flex items-center px-3 py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-white transition" data-page="zoeken">
+                        <i class="fas fa-search mr-2"></i>
+                        Zoeken
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div id="pageContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 transform translate-y-full transition-transform duration-300 z-50">
+        <div class="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script>
+        // KV Storage Polyfill for standalone deployment
+        if (!window.kv) {
+            window.kv = {
+                async get(key) {
+                    try {
+                        const value = localStorage.getItem(`kv_${key}`);
+                        return value ? JSON.parse(value) : null;
+                    } catch (error) {
+                        return null;
+                    }
+                },
+                async set(key, value) {
+                    try {
+                        localStorage.setItem(`kv_${key}`, JSON.stringify(value));
+                    } catch (error) {
+                        console.warn('KV set failed:', error);
+                    }
+                },
+                async delete(key) {
+                    try {
+                        localStorage.removeItem(`kv_${key}`);
+                    } catch (error) {
+                        console.warn('KV delete failed:', error);
+                    }
+                }
+            };
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
